@@ -5,7 +5,7 @@
   "publisher": "daiyousei-qz",
   "repository": "https://github.com/daiyousei-qz/glsld-vscode.git",
   "description": "An experimental language server for the OpenGL Shading Language (GLSL).",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "engines": {
     "vscode": "^1.73.0"
   },
