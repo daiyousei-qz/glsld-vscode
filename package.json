@@ -1,0 +1,89 @@
+{
+  "name": "glsld-vscode",
+  "displayName": "glsld",
+  "icon": "images/resized_glsld_icon_chatgpt.png",
+  "publisher": "daiyousei-qz",
+  "repository": "https://github.com/daiyousei-qz/glsld-vscode.git",
+  "description": "An experimental language server for the OpenGL Shading Language (GLSL).",
+  "version": "0.0.5",
+  "engines": {
+    "vscode": "^1.73.0"
+  },
+  "categories": [
+    "Other", "Programming Languages"
+  ],
+  "activationEvents": [
+    "onLanguage:glsl"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "glsl",
+        "aliases": [
+          "GLSL"
+        ],
+        "extensions": [
+          ".vert",
+          ".frag",
+          ".geom",
+          ".tesc",
+          ".tese",
+          ".comp",
+          ".mesh",
+          ".task",
+          ".rgen",
+          ".rahit",
+          ".rchit",
+          ".rmiss",
+          ".rint",
+          ".rcall"
+        ],
+        "firstLine": "^\\s*#\\s*version\\s+\\d+\\b"
+      }
+    ],
+    "commands": [
+      {
+        "command": "glsld.stopLanguageServer",
+        "title": "glsld: Stop Language Server"
+      },
+      {
+        "command": "glsld.restartLanguageServer",
+        "title": "glsld: Restart Language Server"
+      }
+    ],
+    "configuration":{
+      "properties": {
+        "glsld.binaryPath": {
+          "type": "string",
+          "description": "Path to the glsld binary. If not specified, the extension will try to use a builtin version of the binary if available."
+        }
+      }
+    }
+  },
+  "dependencies": {
+    "vsce": "^2.14.0",
+    "vscode-languageclient": "8.0.2"
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/glob": "^8.0.0",
+    "@types/mocha": "^10.0.0",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.73.0",
+    "@typescript-eslint/eslint-plugin": "^5.42.0",
+    "@typescript-eslint/parser": "^5.42.0",
+    "@vscode/test-electron": "^2.2.0",
+    "eslint": "^8.26.0",
+    "glob": "^8.0.3",
+    "mocha": "^10.1.0",
+    "typescript": "^4.8.4"
+  }
+}
